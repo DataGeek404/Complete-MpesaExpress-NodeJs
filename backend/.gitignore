@@ -1,0 +1,12 @@
+node_modules/
+.next/
+dist/
+*.env.example
+*.log
+
+
+.env
+.env.local
+# But allow .env.example files
+!.env.example
+!**/.env.example
