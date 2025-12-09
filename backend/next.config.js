@@ -3,16 +3,12 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ['mysql2']
   },
-  // Disable static page generation completely
-  generateBuildId: async () => {
-    return 'build-' + Date.now()
-  },
-  // Skip trailing slashes and disable static optimization
-  trailingSlash: false,
-  // This prevents Next.js from trying to export static pages
-  ...(process.env.NODE_ENV === 'production' && {
-    distDir: '.next'
-  })
+  // Force dynamic rendering - no static page generation
+  output: 'standalone',
+  // Disable static optimization completely
+  ...(process.env.BUILD_STANDALONE === 'true' && {
+    compress: false,
+  }),
 };
 
 module.exports = nextConfig;
